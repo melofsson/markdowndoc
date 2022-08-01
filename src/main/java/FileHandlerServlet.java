@@ -13,10 +13,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.locks.ReadWriteLock;
+import java.util.stream.Collectors;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -96,7 +98,11 @@ public class FileHandlerServlet extends HttpServlet {
         if (!isDeletePageRequest(request)) {
             if (isSubPageRequest(request) && !isDeleteSubPageRequest(request)){
                 sectionDirName = section.replace(" ", "_").toLowerCase();
-                String data = Files.readString(Path.of(PAGES_DIR + sectionDirName + "/" + parentPageDir  + "/" + fileName+ ".md"));
+                String data = Files.lines(Paths.get(PAGES_DIR + sectionDirName + "/" + parentPageDir  + "/" + fileName+ ".md"))
+                .collect(Collectors.joining(System.lineSeparator()));
+                
+                
+                /*Files.readString(Path.of(PAGES_DIR + sectionDirName + "/" + parentPageDir  + "/" + fileName+ ".md"));*/
                 request.setAttribute("section",section);
         
                 HashMap parentPageBeanMap = new HashMap<>();
@@ -135,7 +141,10 @@ public class FileHandlerServlet extends HttpServlet {
                 fileName = parentPageDir;
                 pageName = parentPageName;
             }
-            String data = Files.readString(Path.of(PAGES_DIR + sectionDirName + "/" + fileName + ".md"));
+            String data = Files.lines(Paths.get(PAGES_DIR + sectionDirName + "/" + fileName + ".md"))
+            .collect(Collectors.joining(System.lineSeparator()));
+            
+            //Files.readString(Path.of(PAGES_DIR + sectionDirName + "/" + fileName + ".md"));
             request.setAttribute("section",section);
 
             HashMap pageBeanMap = new HashMap<>();

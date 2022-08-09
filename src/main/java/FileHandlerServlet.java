@@ -101,7 +101,6 @@ public class FileHandlerServlet extends HttpServlet {
                 String data = Files.lines(Paths.get(PAGES_DIR + sectionDirName + "/" + parentPageDir  + "/" + fileName+ ".md"))
                 .collect(Collectors.joining(System.lineSeparator()));
                 
-                
                 /*Files.readString(Path.of(PAGES_DIR + sectionDirName + "/" + parentPageDir  + "/" + fileName+ ".md"));*/
                 request.setAttribute("section",section);
         

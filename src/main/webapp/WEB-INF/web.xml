@@ -9,22 +9,22 @@
 
   <context-param>
     <param-name>contentJsonPath</param-name>
-    <param-value></param-value>
+    <param-value>/Volumes/Creative/officeassistent/doc/content.json</param-value>
   </context-param>
 
   <context-param>
     <param-name>pagesPath</param-name>
-    <param-value></param-value>
+    <param-value>/Volumes/Creative/officeassistent/doc/pages/</param-value>
   </context-param>
 
   <context-param>
     <param-name>videoPath</param-name>
-    <param-value></param-value>
+    <param-value>/Volumes/Creative/officeassistent/video/</param-value>
   </context-param>
 
   <context-param>
     <param-name>logoPath</param-name>
-    <param-value></param-value>
+    <param-value>/Volumes/Creative/officeassistent/doc/webcontent/img/download.png</param-value>
   </context-param>
 
   <context-param>
